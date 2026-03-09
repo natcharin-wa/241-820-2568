@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+</head>
+<body>
+    <script>
+        fetch('htp://localhost:8000/users')
+        .then(Response => {
+            return Response.json()
+            })
+            .then((ResponseData) => {
+                console.log('Response:',ResponseData)
+            })   
+    </script>
+</body>
+</html>

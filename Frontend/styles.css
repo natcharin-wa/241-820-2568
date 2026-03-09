@@ -1,0 +1,130 @@
+/* 1. ตั้งค่าพื้นฐาน */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: hsl(195, 49%, 75%) !important; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* 2. กล่องคอนเทนเนอร์หลัก */
+.container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    /* ปรับเงาให้ดูฟุ้งสวยขึ้นกับพื้นหลังสีเข้ม */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+    width: 100%;
+    max-width: 450px;
+}
+
+/* 3. หัวข้อ Register form */
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* 4. จัดระเบียบการวางเลย์เอาต์ */
+.flex {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-input {
+    margin-bottom: 1.2rem;
+}
+
+.header-form {
+    min-width: 70px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* 5. ตกแต่งช่อง Input และ Textarea */
+.form, textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form:focus, textarea:focus {
+    border-color: #412fa5;
+    box-shadow: 0 0 5px rgba(56, 5, 71, 0.2);
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+    margin-top: 5px;
+}
+
+/* 6. ส่วนเพศและงานอดิเรก */
+.gender .flex {
+    flex-wrap: wrap;
+}
+
+.form-input div {
+    margin-top: 5px;
+    color: #444;
+}
+
+/* 7. ส่วนแสดงข้อความแจ้งเตือน */
+.message {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: #ddd;
+}
+
+.message.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.message.danger {
+    background-color: #f44336;
+    color: white;
+}
+
+/* 8. ปุ่มส่งข้อมูล */
+.center {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
