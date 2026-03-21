@@ -1,6 +1,4 @@
-// ==========================================
-// [1] ระบบ LOGIN
-// ==========================================
+// ระบบ LOGIN
 function checkLogin(event) {
     if (event) event.preventDefault(); 
     let email = document.getElementById("email").value;
@@ -21,9 +19,8 @@ function checkLogin(event) {
     }
 }
 
-// ==========================================
-// [2] เมื่อโหลดหน้าเว็บ (DOMContentLoaded)
-// ==========================================
+// เมื่อโหลดหน้าเว็บ
+
 document.addEventListener("DOMContentLoaded", function() {
     // 1. จัดการชื่อผู้ใช้
     const userEmail = sessionStorage.getItem('currentUser');
@@ -33,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         userNameElement.innerText = `Hi, ${userData ? userData.name : 'Lunar'}!`;
     }
 
-    // 2. ขีดเส้นใต้เมนูที่เลือก (Active State)
+    // 2. ขีดเส้นใต้เมนูที่เลือก
     const currentPath = window.location.pathname;
     document.querySelectorAll('.nav-menu a').forEach(link => {
         if (link.getAttribute('href') && currentPath.includes(link.getAttribute('href'))) {
@@ -54,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         displayGoalStatus(); // คำนวณ % เป้าหมาย
     }
 
-    // 4. ระบบเปิด/ปิด Modal (สำหรับหน้าที่มีปุ่มบวก)
+    // 4. ระบบเปิด/ปิด
     const modal = document.getElementById('dataModal');
     const addBtn = document.querySelector('.add-btn');
     if (addBtn && modal) {
@@ -63,9 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// ==========================================
-// [3] ฟังก์ชันจัดการข้อมูล (Helper Functions)
-// ==========================================
+// จัดการข้อมูล
 
 function closeModal() {
     const modal = document.getElementById('dataModal');
@@ -86,7 +81,7 @@ function saveData() {
     localStorage.setItem('latestStats', JSON.stringify(currentStats));
     saveToHistory(weight, cal, ex, water);
 
-    // อัปเดต UI ทันที (ถ้าอยู่หน้า Dashboard)
+    // อัปเดต UI 
     updateDashboardUI(currentStats);
     closeModal();
     document.querySelectorAll('.modal-content input').forEach(input => input.value = '');
@@ -124,15 +119,13 @@ function saveToHistory(weight, cal, ex, water) {
     localStorage.setItem('fitnessHistory', JSON.stringify(history));
 }
 
-// ==========================================
-// [4] ฟังก์ชันคำนวณหน้า GOALS
-// ==========================================
+// ฟังก์ชันคำนวณหน้า GOALS
+
 function displayGoalStatus() {
     const history = JSON.parse(localStorage.getItem('fitnessHistory')) || [];
     const weightBar = document.getElementById('weightBar');
     const percentText = document.getElementById('percentText');
 
-    // ตั้งค่าเริ่มต้นสมมติ (หรือดึงจาก LocalStorage ถ้าคุณมีระบบตั้งเป้าหมาย)
     const startWeight = 57; 
     const targetWeight = 52; 
 
@@ -146,9 +139,7 @@ function displayGoalStatus() {
     }
 }
 
-// ==========================================
-// [5] ฟังก์ชันวาดกราฟ PROGRESS
-// ==========================================
+// วาดกราฟ PROGRESS
 function renderProgressChart() {
     const canvas = document.getElementById('myChart');
     if (!canvas) return;
@@ -171,7 +162,7 @@ function renderProgressChart() {
     });
 }
 
-// ฟังก์ชันเปิด/ปิด Modal เป้าหมาย
+// เปิด/ปิด Modal เป้าหมาย
 function openGoalModal() {
     document.getElementById('goalModal').style.display = 'flex';
 }
@@ -180,17 +171,17 @@ function closeGoalModal() {
     document.getElementById('goalModal').style.display = 'none';
 }
 
-// ฟังก์ชันบันทึกเป้าหมายและคำนวณ %
+// บันทึกเป้าหมายและคำนวณ %
 function saveGoalWeight() {
     const targetValue = document.getElementById('targetInput').value;
     if (!targetValue) return alert("กรุณาระบุน้ำหนักเป้าหมาย");
 
     localStorage.setItem('userGoalWeight', targetValue);
     closeGoalModal();
-    displayGoalStatus(); // อัปเดตการแสดงผลทันที
+    displayGoalStatus(); // อัปเดตการแสดงผล
 }
 
-// ฟังก์ชันคำนวณสถานะความคืบหน้า
+// คำนวณสถานะความคืบหน้า
 function displayGoalStatus() {
     const history = JSON.parse(localStorage.getItem('fitnessHistory')) || [];
     const targetWeight = parseFloat(localStorage.getItem('userGoalWeight'));
@@ -213,7 +204,6 @@ function displayGoalStatus() {
             progress = (actualLost / totalToLose) * 100;
         }
 
-        // คุมค่าให้อยู่ในช่วง 0-100%
         progress = Math.min(100, Math.max(0, progress));
 
         // อัปเดตหน้าจอ
@@ -225,21 +215,15 @@ function displayGoalStatus() {
     }
 }
 
-// สั่งให้โหลดสถานะเป้าหมายทุกครั้งที่เปิดหน้า Goals
+// โหลดสถานะเป้าหมายทุกครั้งที่เปิดหน้า Goals
 if (window.location.pathname.includes('goals.html')) {
     window.addEventListener('load', displayGoalStatus);
 }
 
-// ==========================================
-// [1] ส่วนของ MODAL ควบคุมการเปิด/ปิด
-// ==========================================
 function openGoalModal() { document.getElementById('goalModal').style.display = 'flex'; }
 function closeGoalModal() { document.getElementById('goalModal').style.display = 'none'; }
 function closeModal() { document.getElementById('dataModal').style.display = 'none'; }
 
-// ==========================================
-// [2] ฟังก์ชัน SAVE ข้อมูลจาก Dashboard
-// ==========================================
 function saveData() {
     const weight = document.getElementById('inputWeight').value;
     const cal = document.getElementById('inputCal').value;
@@ -252,7 +236,7 @@ function saveData() {
     const stats = { weight, cal, ex, water };
     localStorage.setItem('latestStats', JSON.stringify(stats));
 
-    // เก็บลงประวัติ (History) เพื่อใช้คำนวณ % และทำกราฟ
+    // เก็บลงประวัติ เพื่อใช้คำนวณ % และทำกราฟ
     let history = JSON.parse(localStorage.getItem('fitnessHistory')) || [];
     history.push({ 
         weight: parseFloat(weight), 
@@ -294,10 +278,8 @@ function displayGoalStatus() {
             progress = 100;
         }
 
-        // จำกัดค่าให้อยู่ระหว่าง 0 - 100%
         progress = Math.min(100, Math.max(0, progress));
 
-        // แสดงผลบน UI ตามจุดที่วงสีแดงไว้
         if (weightBar) weightBar.style.width = progress + "%";
         if (percentText) percentText.innerText = Math.round(progress) + "%";
         if (goalDetailText) {
