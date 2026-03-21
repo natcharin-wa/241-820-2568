@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitrix - Progress</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="progress-page">
+
+    <div class="box">
+        <div class="logo-group">
+            <img src="img/Logo.jpg" alt="Logo" class="logo">
+            <h1>Fitrix</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="progress.html">Progress</a>
+            <a href="goals.html">Goals</a>
+        </nav>
+    </div>
+
+    <div class="progress-content">
+        <h2>พัฒนาการ</h2>
+          
+        <div class="chart-header">
+            <h1 class="diff-text" id="statusText">กรอกข้อมูลเพื่อดูพัฒนาการ</h1>
+        </div>
+
+        <div class="graph-box">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div class="footer-action">
+            <button class="add-btn" onclick="window.location.href='dashboard.html'">+</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,11 +1,35 @@
-<!DOCTYPE  html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script src="main.js"></script>
-</body>
-</html>
+<div class="goals-content">
+    <h1 class="goals-title">เป้าหมาย</h1>
+    <div class="main-goal-card">
+        <div class="goal-info">
+            <img src="img/target-icon.png" alt="Target" class="target-icon">
+            <div class="text-group">
+                <h2 id="goalTitle">ลดน้ำหนักให้ได้ตามเป้า!</h2>
+                <div class="progress-container">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="weightBar" style="width: 0%;"></div>
+                    </div>
+                    <span class="progress-percentage" id="percentText">0%</span>
+                </div>
+                <p class="goal-details" id="goalDetailText">กรุณาตั้งเป้าหมายใหม่</p>
+            </div>
+        </div>
+        <button class="add-goal-btn" onclick="openGoalModal()">
+            <span>+ เพิ่มเป้าหมาย</span>
+        </button>
+    </div>
+</div>
+
+<div id="goalModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h3>ตั้งเป้าหมายลดน้ำหนัก</h3>
+        <div class="input-group">
+            <label>น้ำหนักเป้าหมาย (kg):</label>
+            <input type="number" id="targetInput" placeholder="เช่น 52">
+        </div>
+        <div class="modal-btns">
+            <button onclick="closeGoalModal()" class="cancel-btn">ยกเลิก</button>
+            <button onclick="saveGoalWeight()" class="save-btn">บันทึก</button>
+        </div>
+    </div>
+</div>

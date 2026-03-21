@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitrix - Goals</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="goals-page">
+
+    <div class="box">
+        <div class="logo-group">
+            <img src="img/Logo.jpg" alt="Logo" class="logo" width="60">
+            <h1>Fitrix</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="progress.html">Progress</a>
+            <a href="goals.html" class="active">Goals</a>
+        </nav>
+    </div>
+
+    <div class="goals-content">
+        <h2 class="goals-title">เป้าหมาย</h2>
+        
+        <div class="main-goal-card">
+            <div class="goal-info-container">
+                <div class="goal-target-icon">🎯</div>
+                
+                <div class="goal-text-details">
+                    <h3 id="goalTitleText">ลดน้ำหนัก 5 kg</h3>
+                    
+                    <div class="progress-wrapper">
+                        <div class="progress-bg">
+                            <div id="weightBar" class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        <span id="percentText" class="percent-label">60%</span>
+                    </div>
+                    
+                    <p id="goalDetailText" class="goal-subtext">เริ่มต้นน้ำหนัก 57 kg | เป้าหมาย 52 kg</p>
+                </div>
+            </div>
+
+            <button class="add-goal-btn" onclick="openGoalModal()">
+                <span>+</span> เพิ่มเป้าหมาย
+            </button>
+        </div>
+    </div>
+
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <h3>ตั้งเป้าหมายใหม่</h3>
+            <div class="input-group">
+                <label>น้ำหนักเป้าหมาย (kg):</label>
+                <input type="number" id="targetInput" placeholder="เช่น 52">
+            </div>
+            <div class="modal-btns">
+                <button onclick="closeGoalModal()" class="cancel-btn">ยกเลิก</button>
+                <button onclick="saveGoalWeight()" class="save-btn">บันทึกเป้าหมาย</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

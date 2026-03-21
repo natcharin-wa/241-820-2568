@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap');
+
+/* --- [1] ส่วนพื้นฐาน ใช้ร่วมกันทุกหน้า --- */
+body {
+    background-color: #f5f7f6;
+    margin: 0;
+    font-family: "Mitr", sans-serif;
+    color: #2d3748;
+}
+
+/* แถบหัวข้อ (Header) */
+.box {
+    display: flex;
+    background-color: #ddf5eb;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 10px 5%;
+    box-sizing: border-box;
+    gap: 12px;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 45px;
+    height: auto;
+}
+
+h1 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* --- [2] Login / Register --- */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px; 
+    padding: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    margin: 0 0 15px 0;
+}
+
+.field {
+    margin-bottom: 12px;
+}
+
+.label-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+input[type="email"], 
+input[type="password"] {
+    padding: 12px 20px;
+    width: 360px;
+    font-family: "Mitr", sans-serif;
+    border-radius: 30px;
+    background-color: #e2e2e2;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    background-color: #4caf8f;
+    font-family: "Mitr", sans-serif;
+    width: 180px;
+    height: 45px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    display: block;          
+    margin: 25px auto 0 auto; 
+    transition: 0.3s;
+}
+
+/* --- [3] ส่วนของหน้า Dashboard (แก้จุดนี้!) --- */
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    margin-left: auto; 
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #718096;
+    font-size: 15px;
+}
+
+.nav-menu a.active {
+    color: #4caf8f;
+    border-bottom: 2px solid #4caf8f;
+    font-weight: 500;
+}
+
+/* 1. แก้ไข: ขยายพื้นที่หน้าจอ Dashboard ให้กว้างขึ้นเพื่อรองรับเลย์เอาท์ใหม่ */
+.dashboard-content {
+    max-width: 800px; /* เพิ่มความกว้างจาก 700px เพื่อให้มีพื้นที่เพิ่ม */
+    margin: 30px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* 2. แก้ไข: ขยาย Grid ให้กว้างขึ้นตามหน้าจอ */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; /* เพิ่มระยะห่างระหว่างการ์ดเล็กน้อย */
+    margin-top: 25px;
+    width: 100%; /* บังคับให้ขยายเต็มความกว้าง */
+}
+
+/* 3. แก้ไข: ปรับการ์ดให้มีขนาดใหญ่ขึ้นและล็อกตำแหน่งไอคอน */
+.card {
+    padding: 20px 25px;
+    border-radius: 25px;
+    text-align: left;
+    height: 150px; /* เพิ่มความสูงการ์ดเล็กน้อย */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative; 
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    
+    /* บังคับไม่ให้ตัวหนังสือเบียดไอคอน */
+    padding-right: 120px; /* เว้นพื้นที่ด้านขวาไว้สำหรับไอคอนขนาด 95px + ระยะห่าง */
+}
+
+/* ปรับตำแหน่งไอคอน: ขยับลงมาด้านล่างและไม่ชนตัวเลข */
+.card-icon {
+    position: absolute;
+    right: 15px;      /* ขยับเข้ามาจากขอบขวาเพื่อไม่ให้ชนขอบ */
+    bottom: 10px;     /* ขยับลงมาด้านล่างเพื่อให้ดูสมดุล */
+    width: 95px;      /* ขนาดใหญ่กำลังดี 95px */
+    height: 95px;     
+    object-fit: contain; 
+    opacity: 0.5;     /* ความเข้มกำลังพอเหมาะ */
+    z-index: 1;
+}
+
+.card span, .card h3 {
+    position: relative;
+    z-index: 2; /* ดันตัวหนังสือให้อยู่หน้าไอคอนเสมอ */
+}
+
+.card span {
+    font-size: 15px;
+    color: #4a5568;
+    margin-bottom: 5px;
+}
+
+.card h3 {
+    font-size: 26px; /* ขยายตัวเลขแคลอรี่ให้ชัดเจนขึ้น */
+    margin: 0;
+    color: #2d3748;
+    font-weight: 700;
+}
+
+/* สีการ์ดแยกตามประเภทไอคอน (ใช้โค้ดเดิม) */
+.card-blue { background-color: #e3f2fd; }   /* น้ำหนัก (scale.png) */
+.card-orange { background-color: #fff3e0; } /* แคลอรี่ (Fire.png) */
+.card-green { background-color: #f1f8e9; }  /* ออกกำลังกาย (exercise.png) */
+.card-cyan { background-color: #e0f7fa; }   /* น้ำ (waterdrop.png) */
+
+.add-btn {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #4caf8f;
+    color: white;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    margin: 30px auto;
+    display: block;
+}
+
+/* --- [4] เฉพาะหน้า Progress (ใช้โค้ดเดิม) --- */
+.progress-content {
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.modal {
+    display: none; /* ปิดไว้ก่อน */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+/* กล่องป้อนข้อมูล */
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 25px;
+    width: 350px;
+    text-align: center;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-family: "Mitr", sans-serif;
+}
+
+.modal-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.save-btn, .cancel-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: "Mitr", sans-serif;
+}
+
+.save-btn { background-color: #4caf8f; color: white; }
+.cancel-btn { background-color: #eee; }
+
+.goals-page {
+    background-color: #f1f5f3; /* สีพื้นหลังเทาอมเขียวอ่อนๆ */
+}
+
+.goals-content {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.goals-title {
+    font-size: 28px;
+    color: #2d3748;
+    margin-bottom: 30px;
+}
+
+/* --- [การ์ดเป้าหมายหลัก] --- */
+.main-goal-card {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* เงาจางๆ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.goals-content {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.goals-title {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #2d3748;
+}
+
+.main-goal-card {
+    background: white;
+    padding: 35px;
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.goal-info-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.goal-target-icon {
+    width: 85px;
+    height: 85px;
+    border: 4px solid #4caf8f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    color: #4caf8f;
+    flex-shrink: 0;
+}
+
+.goal-text-details {
+    flex-grow: 1;
+}
+
+.goal-text-details h3 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    color: #2d3748;
+}
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.progress-bg {
+    background-color: #e2e8f0;
+    height: 12px;
+    border-radius: 10px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background-color: #4caf8f;
+    height: 100%;
+    transition: width 1s ease-in-out;
+}
+
+.percent-label {
+    font-weight: 600;
+    color: #4a5568;
+    min-width: 40px;
+}
+
+.goal-subtext {
+    font-size: 14px;
+    color: #718096;
+    margin-top: 10px;
+}
+
+.add-goal-btn {
+    background-color: #4caf8f;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-family: "Mitr", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.add-goal-btn:hover {
+    background-color: #3d8b73;
+    transform: scale(1.05);
+}
