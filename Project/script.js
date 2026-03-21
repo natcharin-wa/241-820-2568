@@ -132,7 +132,7 @@ function displayGoalStatus() {
     if (history.length > 0 && weightBar) {
         const currentWeight = history[history.length - 1].weight;
         let progress = ((startWeight - currentWeight) / (startWeight - targetWeight)) * 100;
-        progress = Math.min(100, Math.max(0, progress)); // คุมให้อยู่ระหว่าง 0-100%
+        progress = Math.min(100, Math.max(0, progress)); // ให้อยู่ระหว่าง 0-100%
 
         weightBar.style.width = progress + "%";
         if(percentText) percentText.innerText = Math.round(progress) + "%";
@@ -236,7 +236,7 @@ function saveData() {
     const stats = { weight, cal, ex, water };
     localStorage.setItem('latestStats', JSON.stringify(stats));
 
-    // เก็บลงประวัติ เพื่อใช้คำนวณ % และทำกราฟ
+    // เก็บลงประวัติ 
     let history = JSON.parse(localStorage.getItem('fitnessHistory')) || [];
     history.push({ 
         weight: parseFloat(weight), 
@@ -253,7 +253,7 @@ function displayGoalStatus() {
     const userEmail = sessionStorage.getItem('currentUser') || 'test@gmail.com';
     const userData = JSON.parse(localStorage.getItem(userEmail)) || {};
     
-    // ดึงน้ำหนักล่าสุดจาก Dashboard และเป้าหมายที่ตั้งไว้
+    // ดึงน้ำหนักล่าสุดจาก 
     const currentWeight = userData.currentWeight || 0; 
     const targetWeight = parseFloat(localStorage.getItem('userGoalWeight')) || 0;
     const history = userData.fitnessHistory || [];
@@ -263,7 +263,7 @@ function displayGoalStatus() {
     const goalDetailText = document.getElementById('goalDetailText');
 
     if (targetWeight > 0 && currentWeight > 0) {
-        // หาน้ำหนักเริ่มต้น (จากบันทึกครั้งแรกในประวัติ)
+        // หาน้ำหนักเริ่มต้น 
         const startWeight = history.length > 0 ? history[0].weight : currentWeight;
 
         // คำนวณ % ความคืบหน้า
